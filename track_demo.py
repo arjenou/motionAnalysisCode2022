@@ -19,7 +19,7 @@ from tracking_utils.timer import Timer
 from inference import Detect
 
 def track_demo():
-    video_path = "/content/drive/MyDrive/Yolov5_DeepSort/03_60fps.MOV" 
+    video_path = "/content/drive/MyDrive/test/03_60fps.MOV" 
     txt_dir = "result"
     if not os.path.exists(txt_dir):
         os.makedirs(txt_dir)
@@ -81,16 +81,16 @@ def track_demo():
                     elif w<0:w=0
                     elif h<0:h=0
                     corp_img=im0[y:y+h,x:x+w]
-                    file=f"/content/drive/MyDrive/Test_wang/image/{tid}"
+                    file=f"/content/drive/MyDrive/test/image/{tid}"
                     if os.path.exists(file):
-                      jpg_file=f"/content/drive/MyDrive/Test_wang/image/{tid}/{tid}_{frame_id}.jpg"
+                      jpg_file=f"/content/drive/MyDrive/test/image/{tid}/{tid}_{frame_id}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
                       print(f"save{tid}successed")   
                       print(t1)                  
                     else:
-                      os.system(f"mkdir /content/drive/MyDrive/Test_wang/image/{tid}")
+                      os.system(f"mkdir /content/drive/MyDrive/test/image/{tid}")
                       print(f"make {tid} succeed")
-                      jpg_file=f"/content/drive/MyDrive/Test_wang/image/{tid}/{tid}_{frame_id}.jpg"
+                      jpg_file=f"/content/drive/MyDrive/test/image/{tid}/{tid}_{frame_id}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
                       print(f"save{tid}successed")
                       print(t1)
