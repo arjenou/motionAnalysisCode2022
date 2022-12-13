@@ -120,6 +120,6 @@ while True:
     os.system(f"rm -f {imgpath}")
     # cv2.imwrite(f"{base_name}.jepg",img)
     print(f"Sucess get {imgpath} is {base_name}")
-    p=double(i/i+l)
+    p=float(a/a+l)
     print("検知成功率：",p)
   # ti.sleep(10)
