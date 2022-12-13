@@ -68,6 +68,7 @@ while True:
     w = img.shape[1]
     if results.pose_landmarks:
       a=a+1
+      print("検知成功画像数：",i)
       for i in range(33): 
 
         cx = int(results.pose_landmarks.landmark[i].x * w)
@@ -103,7 +104,7 @@ while True:
             img = cv2.circle(img,(cx,cy), radius, (94,218,121), -1)
         else: 
             img = cv2.circle(img,(cx,cy), radius, (0,255,0), -1)
-       print("検知成功画像数：",i)
+      
     else:
       l=l+1
       print("no kindpoint",imgpath)
