@@ -18,9 +18,11 @@ args = ap.parse_args()
 DEFAULT_FILEPATH = args.filepath
 print(DEFAULT_FILEPATH)
 extt="t.jpg"
+a=0
+l=0
 while True:
   Filelist=[]
-  org_img_folder=f'/content/drive/MyDrive/Yolov5_DeepSort/runs/track/{DEFAULT_FILEPATH}'
+  org_img_folder=DEFAULT_FILEPATH
   
   def getFileList(dir,ext=None):
     newDir = dir
@@ -65,6 +67,7 @@ while True:
     h = img.shape[0]
     w = img.shape[1]
     if results.pose_landmarks:
+      a=a+1
       for i in range(33): 
 
         cx = int(results.pose_landmarks.landmark[i].x * w)
@@ -100,7 +103,9 @@ while True:
             img = cv2.circle(img,(cx,cy), radius, (94,218,121), -1)
         else: 
             img = cv2.circle(img,(cx,cy), radius, (0,255,0), -1)
+    print("検知成功画像数：",i)
     else:
+      l=l+1
       print("no kindpoint",imgpath)
       for i in range(33): 
         with open(f"{base_name}_test.txt","a") as f:
@@ -108,9 +113,12 @@ while True:
       print("fail_test.txt make")
       cv2.imwrite(f"{base_name}_fail_test.jpg",img)
       os.system(f"rm -f {imgpath}")
+      print("検知失敗画像数：",l)
       continue
     cv2.imwrite(f"{base_name}_test.jpg",img)
     os.system(f"rm -f {imgpath}")
     # cv2.imwrite(f"{base_name}.jepg",img)
     print(f"Sucess get {imgpath} is {base_name}")
+    p=double(i/i+l)
+    print("検知成功率：",p)
   # ti.sleep(10)
