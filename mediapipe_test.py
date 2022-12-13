@@ -68,7 +68,7 @@ while True:
     w = img.shape[1]
     if results.pose_landmarks:
       a=a+1
-      print("検知成功画像数：",i)
+      print("検知成功画像数：",a)
       for i in range(33): 
 
         cx = int(results.pose_landmarks.landmark[i].x * w)
