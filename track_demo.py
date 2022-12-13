@@ -18,8 +18,21 @@ from utils.visualize import plot_tracking
 from tracking_utils.timer import Timer
 from inference import Detect
 
+ap = argparse.ArgumentParser()
+DEFAULT_VIDEOPATH = "/content/drive/MyDrive/test/03_60fps.MOV"
+DEFAULT_SAVEPATH = "image"
+ap.add_argument('-videopath', type=str, default=DEFAULT_VIDEOPATH,
+                    help='set file')
+ap.add_argument('-imagefile', type=str, default=DEFAULT_SAVEPATH,
+                    help='set file')
+args = ap.parse_args()
+
+DEFAULT_VIDEOPATH = args.videopath
+DEFAULT_SAVEPATH = args.imagefile
+print(DEFAULT_VIDEOPATH)
+
 def track_demo():
-    video_path = "/content/drive/MyDrive/test/03_60fps.MOV" 
+    video_path = DEFAULT_VIDEOPATH 
     txt_dir = "result"
     if not os.path.exists(txt_dir):
         os.makedirs(txt_dir)
@@ -81,16 +94,16 @@ def track_demo():
                     elif w<0:w=0
                     elif h<0:h=0
                     corp_img=im0[y:y+h,x:x+w]
-                    file=f"/content/drive/MyDrive/test/image/{tid}"
+                    file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}"
                     if os.path.exists(file):
-                      jpg_file=f"/content/drive/MyDrive/test/image/{tid}/{tid}_{frame_id}.jpg"
+                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
                       print(f"save{tid}successed")   
                       print(t1)                  
                     else:
-                      os.system(f"mkdir /content/drive/MyDrive/test/image/{tid}")
+                      os.system(f"mkdir /content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}")
                       print(f"make {tid} succeed")
-                      jpg_file=f"/content/drive/MyDrive/test/image/{tid}/{tid}_{frame_id}.jpg"
+                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
                       print(f"save{tid}successed")
                       print(t1)
