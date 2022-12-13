@@ -67,10 +67,8 @@ while True:
     h = img.shape[0]
     w = img.shape[1]
     if results.pose_landmarks:
-      a=a+1
-      print("検知成功画像数：",a)
+      a=a+1    
       for i in range(33): 
-
         cx = int(results.pose_landmarks.landmark[i].x * w)
         cy = int(results.pose_landmarks.landmark[i].y * h)
         cz = results.pose_landmarks.landmark[i].z
@@ -114,12 +112,13 @@ while True:
       print("fail_test.txt make")
       cv2.imwrite(f"{base_name}_fail_test.jpg",img)
       os.system(f"rm -f {imgpath}")
-      print("検知失敗画像数：",l)
       continue
     cv2.imwrite(f"{base_name}_test.jpg",img)
     os.system(f"rm -f {imgpath}")
     # cv2.imwrite(f"{base_name}.jepg",img)
     print(f"Sucess get {imgpath} is {base_name}")
     p=float(a/a+l)
+        print("検知成功画像数：",a)
+    print("検知失敗画像数：",l)
     print("検知成功率：",p)
   # ti.sleep(10)
