@@ -118,7 +118,7 @@ while True:
     # cv2.imwrite(f"{base_name}.jepg",img)
     print(f"Sucess get {imgpath} is {base_name}")
     p=float(a/(a+l))
-        print("検知成功画像数：",a)
+    print("検知成功画像数：",a)
     print("検知失敗画像数：",l)
     print("検知成功率：",p)
   # ti.sleep(10)
