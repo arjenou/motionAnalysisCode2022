@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import time as ti
 from torch import NoneType
 import argparse
+import csv
 
 from zmq import NULL
 # %matplotlib inlinew
@@ -72,8 +73,12 @@ while True:
         cx = int(results.pose_landmarks.landmark[i].x * w)
         cy = int(results.pose_landmarks.landmark[i].y * h)
         cz = results.pose_landmarks.landmark[i].z
-        with open(f"{base_name}_test.txt","a") as f:
-          f.write(f"({cx},{cy})\n")
+        with open(f"{base_name}.csv", "w", newline="") as csvfile:
+          writer = csv.writer(csvfile)
+          writer.writerow([imgname,cx, cy])
+
+        # with open(f"{base_name}_test.txt","a") as f:
+        #   f.write(f"({cx},{cy})\n")
         radius = 1
 
         if i == 0: 
