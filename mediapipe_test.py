@@ -73,7 +73,7 @@ while True:
         cx = int(results.pose_landmarks.landmark[i].x * w)
         cy = int(results.pose_landmarks.landmark[i].y * h)
         cz = results.pose_landmarks.landmark[i].z
-        with open(f"{base_name}.csv", "w", newline="") as csvfile:
+        with open(f"{base_name}.csv", "a", newline="") as csvfile:
           writer = csv.writer(csvfile)
           writer.writerow([imgname,cx, cy])
 
