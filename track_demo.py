@@ -21,15 +21,22 @@ from inference import Detect
 ap = argparse.ArgumentParser()
 DEFAULT_VIDEOPATH = "/content/drive/MyDrive/test/03_60fps.MOV"
 DEFAULT_SAVEPATH = "image"
+DEFAULT_FPS=10
 ap.add_argument('-videopath', type=str, default=DEFAULT_VIDEOPATH,
                     help='set file')
 ap.add_argument('-imagefile', type=str, default=DEFAULT_SAVEPATH,
                     help='set file')
+ap.add_argument('-fps', type=int, default=DEFAULT_FPS,
+                    help='set fps')
 args = ap.parse_args()
 
 DEFAULT_VIDEOPATH = args.videopath
 DEFAULT_SAVEPATH = args.imagefile
-print(DEFAULT_VIDEOPATH)
+DEFAULT_FPS=args.fps
+
+print("DEFAULT_VIDEOPATH"=DEFAULT_VIDEOPATH)
+print("DEFAULT_SAVEPATH"=DEFAULT_SAVEPATH)
+print("DEFAULT_FPS"=DEFAULT_FPS)
 
 def track_demo():
     video_path = DEFAULT_VIDEOPATH 
@@ -50,7 +57,7 @@ def track_demo():
     track_thresh = 0.5
     track_buffer = 30
     match_thresh = 0.8
-    frame_rate = 10
+    frame_rate = DEFAULT_FPS
     aspect_ratio_thresh = 1.6
     min_box_area = 10
     mot20_check = False
