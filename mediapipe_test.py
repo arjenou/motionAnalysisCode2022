@@ -97,10 +97,10 @@ while True:
     else:
       l=l+1
       print("no kindpoint",imgpath)
-      nothingxy=[]
-      for i in range(33):
-        with open(f"{base_name}_fail_test.csv", "w", newline="") as csvfile:
-          writer = csv.writer(csvfile)
+      with open(f"{base_name}_fail_test.csv", "w", newline="") as csvfile:
+        nothingxy=[]   
+        writer = csv.writer(csvfile)
+        for i in range(33):
           nothingxy.extend(["NULL","NULL"])
       writer.writerow([imgname] + nothingxy)
       print("fail_test.txt make")
