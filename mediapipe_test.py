@@ -101,7 +101,7 @@ while True:
       for i in range(33):
         with open(f"{base_name}_fail_test.csv", "w", newline="") as csvfile:
           writer = csv.writer(csvfile)
-          nothingxy.extend([NULL, NUll])
+          nothingxy.extend(["NULL","NULL"])
       writer.writerow([imgname] + nothingxy)
       print("fail_test.txt make")
       cv2.imwrite(f"{base_name}_fail_test.jpg",img)
