@@ -103,7 +103,7 @@ while True:
         for i in range(33):
           nothingxy.extend(["NULL","NULL"])
         writer.writerow([imgname] + nothingxy)
-      print("fail_test.txt make")
+      print("fail_test.csv make")
       cv2.imwrite(f"{base_name}_fail_test.jpg",img)
       os.system(f"rm -f {imgpath}")
       continue
