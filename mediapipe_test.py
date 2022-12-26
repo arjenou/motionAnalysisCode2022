@@ -98,11 +98,11 @@ while True:
       l=l+1
       print("no kindpoint",imgpath)
       with open(f"{base_name}_fail_test.csv", "w", newline="") as csvfile:
-        nothingxy=[]   
         writer = csv.writer(csvfile)
+        nothingxy=[]   
         for i in range(33):
           nothingxy.extend(["NULL","NULL"])
-      writer.writerow([imgname] + nothingxy)
+        writer.writerow([imgname] + nothingxy)
       print("fail_test.txt make")
       cv2.imwrite(f"{base_name}_fail_test.jpg",img)
       os.system(f"rm -f {imgpath}")
