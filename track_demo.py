@@ -17,6 +17,7 @@ from tracker.byte_tracker import BYTETracker
 from utils.visualize import plot_tracking
 from tracking_utils.timer import Timer
 from inference import Detect
+import datetime
 
 ap = argparse.ArgumentParser()
 DEFAULT_VIDEOPATH = "/content/drive/MyDrive/test/03_60fps.MOV"
@@ -104,16 +105,16 @@ def track_demo():
                     corp_img=im0[y:y+h,x:x+w]
                     file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}"
                     if os.path.exists(file):
-                      time_point = frame_index / frame_id
-                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}_{time_point}.jpg"
+                      e = datetime.datetime.now().strftime('%X.%f')
+                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}_{e}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
                       print(f"save{tid}successed")   
                       print(t1)                  
                     else:
-                      time_point = frame_index / frame_id
+                      e = datetime.datetime.now().strftime('%X.%f')
                       os.system(f"mkdir /content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}")
                       print(f"make {tid} succeed")
-                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}_{time_point}.jpg"
+                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}_{e}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
                       print(f"save{tid}successed")
                       print(t1)
