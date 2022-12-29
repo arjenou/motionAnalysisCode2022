@@ -102,7 +102,8 @@ def track_demo():
                     elif w<0:w=0
                     elif h<0:h=0
                     corp_img=im0[y:y+h,x:x+w]
-                    if os.path.exists(file):
+                    idfile = f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}"
+                    if os.path.exists(idfile):
                       timeVideo =str(int(cap.get(cv2.CAP_PROP_POS_MSEC))).zfill(6)
                       jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}_{timeVideo}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
