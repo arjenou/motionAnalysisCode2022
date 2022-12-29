@@ -69,6 +69,7 @@ def track_demo():
     cap = cv2.VideoCapture(video_path)
     frame_id = 0
     results = []
+    frame_index = 0
     while True:
         _,im0 = cap.read()
         frame_id += 1
@@ -103,14 +104,16 @@ def track_demo():
                     corp_img=im0[y:y+h,x:x+w]
                     file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}"
                     if os.path.exists(file):
-                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}.jpg"
+                      time_point = frame_index / frame_id
+                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}_{time_point}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
                       print(f"save{tid}successed")   
                       print(t1)                  
                     else:
+                      time_point = frame_index / frame_id
                       os.system(f"mkdir /content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}")
                       print(f"make {tid} succeed")
-                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}.jpg"
+                      jpg_file=f"/content/drive/MyDrive/test/{DEFAULT_SAVEPATH}/{tid}/{tid}_{frame_id}_{time_point}.jpg"
                       cv2.imwrite(jpg_file, corp_img)
                       print(f"save{tid}successed")
                       print(t1)
